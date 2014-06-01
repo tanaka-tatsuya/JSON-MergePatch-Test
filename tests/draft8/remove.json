@@ -3,52 +3,64 @@
         "description": "If the value is explicitly set to null and that member is currently defined within the target resource, the existing member is removed",
         "tests": [
             {
+                "description": "remove JSON primitive",
                 "target": { "a": "b" },
                 "patch": { "a": null },
                 "expected": { }
             },
             {
+                "description": "remove JSON Array",
                 "target": {
-                    "a": "b",
-                    "c": "d"
+                    "a": [ "b", "c" ]
                 },
                 "patch": { "a": null },
-                "expected": { "c": "d" }
-            },
-            {
-                "target": {
-                    "a": [ "b", "c " ],
-                    "d": "e"
-                },
-                "patch": { "a": null },
-                "expected": { "d": "e" }
-            },
-            {
-                "target": {
-                    "a": "b",
-                    "c": null
-                },
-                "patch": { "a": null },
-                "expected": { "c": null }
-            },
-            {
-                "target": {
-                    "a": null,
-                    "b": "c" 
-                },
-                "patch": { "a": null },
-                "expected": { "b": "c" }
-            },
-            {
-                "target": {
-                    "a": null,
-                    "b": "c" 
-                },
-                "patch": {
-                    "a": null,
-                    "b": null
-                },
                 "expected": { }
+            },
+            {
+                "description": "remove JSON Object",
+                "target": {
+                    "a": { "b": "c" }
+                },
+                "patch": { "a": null },
+                "expected": { }
+            }
+        ]
+    },
+    {
+        "description": "Any member currently defined within the target resource that does not explicitly appear within the patch is to remain untouched and unmodified",
+        "tests": [
+            {
+                "description": "remove JSON primitive",
+                "target": {
+                    "a": "b",
+                    "x": null
+                },
+                "patch": { "a": null },
+                "expected": {
+                    "x": null
+                }
+            },
+            {
+                "description": "remove JSON Array",
+                "target": {
+                    "a": [ "b", "c" ],
+                    "x": null
+                },
+                "patch": { "a": null },
+                "expected": {
+                    "x": null
+                }
+            },
+            {
+                "description": "remove JSON Object",
+                "target": {
+                    "a": { "b": "c" },
+                    "x": null
+                },
+                "patch": { "a": null },
+                "expected": {
+                    "x": null
+                }
             }
         ]
     }

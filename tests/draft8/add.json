@@ -3,46 +3,33 @@
         "description": "If the member is currently undefined within the target resource, and the given value is not null, the member and the value are to be added to the target.",
         "tests": [
             {
+                "description": "add JSON primitive",
                 "target": { },
                 "patch": { "a": "b" },
                 "expected": { "a": "b" }
             },
             {
-                "target": { "a": "b" },
-                "patch": { "c": "d" },
-                "expected": {
-                    "a": "b",
-                    "c": "d"
-                }
-            },
-            {
-                "target": {
-                    "a": null
-                },
-                "patch": { "c": "d" },
-                "expected": {
-                    "a": null,
-                    "c": "d"
-                }
-            },
-            {
-                "target": { "a": "b" },
-                "patch": { "c": [ "d", "e" ] },
-                "expected": {
-                    "a": "b",
-                    "c": [ "d", "e" ]
-                }
-            },
-            {
-                "target": { "a": "b" },
+                "description": "add JSON Array",
+                "target": { },
                 "patch": {
-                    "c": [ "d", "e" ],
-                    "f": "g"
+                    "a": [ "b", "c" ]
                 },
                 "expected": {
-                    "a": "b",
-                    "c": [ "d", "e" ],
-                    "f": "g"
+                    "a": [ "b", "c" ]
+                }
+            },
+            {
+                "description": "add JSON Object",
+                "target": { },
+                "patch": {
+                    "a": {
+                        "b": [ "c", "d" ]
+                    }
+                },
+                "expected": {
+                    "a": {
+                        "b": [ "c", "d" ]
+                    }
                 }
             }
         ]
@@ -51,6 +38,7 @@
         "description": "Any object member contained in the provided data whose value is explicitly null is to be treated as if the member were undefined.",
         "tests": [
             {
+                "description": "add JSON primitive",
                 "target": { },
                 "patch": {
                     "a": "b",
@@ -59,35 +47,76 @@
                 "expected": { "a": "b" }
             },
             {
-                "target": { "a": "b" },
+                "description": "add JSON Array",
+                "target": { },
                 "patch": {
-                    "c": "d",
-                    "e": null
+                    "a": [ "b", null, "c" ]
                 },
                 "expected": {
-                    "a": "b",
-                    "c": "d"
+                    "a": [ "b", "c" ]
                 }
             },
             {
+                "description": "add JSON Object",
+                "target": { },
+                "patch": {
+                    "a": {
+                        "b": [ "c", "d" ],
+                        "e": null
+                    }
+                },
+                "expected": {
+                    "a": {
+                        "b": [ "c", "d" ]
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "description": "Any member currently defined within the target resource that does not explicitly appear within the patch is to remain untouched and unmodified",
+        "tests": [
+            {
+                "description": "add JSON primitive",
                 "target": {
-                    "a": null
+                    "x": null
                 },
                 "patch": {
-                    "c": "d",
-                    "e": null
+                    "a": "b"
                 },
                 "expected": {
-                    "a": null,
-                    "c": "d"
+                    "x": null,
+                    "a": "b"
                 }
             },
             {
-                "target": { "a": "b" },
-                "patch": { "c": [ "d", null, "e" ] },
+                "description": "add JSON Array",
+                "target": {
+                    "x": null
+                },
+                "patch": {
+                    "a": [ "b", "c" ]
+                },
                 "expected": {
-                    "a": "b",
-                    "c": [ "d", "e" ]
+                    "x": null,
+                    "a": [ "b", "c" ]
+                }
+            },
+            {
+                "description": "add JSON Object",
+                "target": {
+                    "x": null
+                },
+                "patch": {
+                    "a": {
+                        "b": [ "c", "d" ]
+                    }
+                },
+                "expected": {
+                    "x": null,
+                    "a": {
+                        "b": [ "c", "d" ]
+                    }
                 }
             }
         ]
