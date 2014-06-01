@@ -33,33 +33,39 @@
                 "description": "remove JSON primitive",
                 "target": {
                     "a": "b",
-                    "x": null
+                    "x": null,
+                    "y": 1
                 },
                 "patch": { "a": null },
                 "expected": {
-                    "x": null
+                    "x": null,
+                    "y": 1
                 }
             },
             {
                 "description": "remove JSON Array",
                 "target": {
                     "a": [ "b", "c" ],
-                    "x": null
+                    "x": null,
+                    "y": 1
                 },
                 "patch": { "a": null },
                 "expected": {
-                    "x": null
+                    "x": null,
+                    "y": 1
                 }
             },
             {
                 "description": "remove JSON Object",
                 "target": {
                     "a": { "b": "c" },
-                    "x": null
+                    "x": null,
+                    "y": 1
                 },
                 "patch": { "a": null },
                 "expected": {
-                    "x": null
+                    "x": null,
+                    "y": 1
                 }
             }
         ]

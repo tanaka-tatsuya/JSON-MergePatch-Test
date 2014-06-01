@@ -210,63 +210,72 @@
                 "description": "replace JSON primitive by JSON Array",
                 "target": {
                     "a": "b",
-                    "x": null
+                    "x": null,
+                    "y": 1
                 },
                 "patch": {
                     "a": [ "c", "d" ]
                 },
                 "expected": {
                     "a": [ "c", "d" ],
-                    "x": null
+                    "x": null,
+                    "y": 1
                 }
             },
             {
                 "description": "replace JSON primitive (null) by JSON Array",
                 "target": {
                     "a": null,
-                    "x": null
+                    "x": null,
+                    "y": 1
                 },
                 "patch": {
                     "a": [ "b", "c" ]
                 },
                 "expected": {
                     "a": [ "b", "c" ],
-                    "x": null
+                    "x": null,
+                    "y": 1
                 }
             },
             {
                 "description": "replace JSON Array by JSON Array",
                 "target": {
                     "a": [ "b", "c" ],
-                    "x": null
+                    "x": null,
+                    "y": 1
                 },
                 "patch": {
                     "a": [ "d", "e" ]
                 },
                 "expected": {
                     "a": [ "d", "e" ],
-                    "x": null
+                    "x": null,
+                    "y": 1
                 }
             },
             {
                 "description": "replace JSON Object by JSON Array",
                 "target": {
                     "a": { "b": "c" },
-                    "x": null
+                    "x": null,
+                    "y": 1
                 },
                 "patch": {
                     "a": [ "d", "e" ]
                 },
                 "expected": {
                     "a": [ "d", "e" ],
-                    "x": null
+                    "x": null,
+                    "y": 1
                 }
             },
             {
                 "description": "replace JSON primitive by JSON Object",
                 "target": {
                     "a": "b",
-                    "x": null
+                    "x": null,
+                    "y": 1
                 },
                 "patch": {
                     "a": {
@@ -275,14 +284,16 @@
                 },
                 "expected": {
                     "a": { "c": "d" },
-                    "x": null
+                    "x": null,
+                    "y": 1
                 }
             },
             {
                 "description": "replace JSON primitive (null) by JSON Object",
                 "target": {
                     "a": null,
-                    "x": null
+                    "x": null,
+                    "y": 1
                 },
                 "patch": {
                     "a": {
@@ -291,14 +302,16 @@
                 },
                 "expected": {
                     "a": { "b": "c" },
-                    "x": null
+                    "x": null,
+                    "y": 1
                 }
             },
             {
                 "description": "replace JSON Array by JSON Object",
                 "target": {
                     "a": [ "b", "c" ],
-                    "x": null
+                    "x": null,
+                    "y": 1
                 },
                 "patch": {
                     "a": {
@@ -307,7 +320,8 @@
                 },
                 "expected": {
                     "a": { "d": "e" },
-                    "x": null
+                    "x": null,
+                    "y": 1
                 }
             }
         ]

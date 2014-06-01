@@ -79,33 +79,38 @@
             {
                 "description": "add JSON primitive",
                 "target": {
-                    "x": null
+                    "x": null,
+                    "y": 1
                 },
                 "patch": {
                     "a": "b"
                 },
                 "expected": {
                     "x": null,
+                    "y": 1,
                     "a": "b"
                 }
             },
             {
                 "description": "add JSON Array",
                 "target": {
-                    "x": null
+                    "x": null,
+                    "y": 1
                 },
                 "patch": {
                     "a": [ "b", "c" ]
                 },
                 "expected": {
                     "x": null,
+                    "y": 1,
                     "a": [ "b", "c" ]
                 }
             },
             {
                 "description": "add JSON Object",
                 "target": {
-                    "x": null
+                    "x": null,
+                    "y": 1
                 },
                 "patch": {
                     "a": {
@@ -114,6 +119,7 @@
                 },
                 "expected": {
                     "x": null,
+                    "y": 1,
                     "a": {
                         "b": [ "c", "d" ]
                     }
