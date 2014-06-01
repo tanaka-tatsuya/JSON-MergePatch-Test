@@ -1,0 +1,109 @@
+[
+    {
+        "description": "If the value is a JSON object and that member is currently defined within the target resource and the existing value is also a JSON object, then recursively apply Rule #2 to each object",
+        "tests": [
+            {
+                "description": "remove recursively",
+                "target": {
+                    "a": {
+                        "b": {
+                            "c": {
+                                "d" : "e"
+                            },
+                            "f": {
+                                "g": "h"
+                            }
+                        }
+                    }
+                },
+                "patch": {
+                     "a": {
+                        "b": {
+                            "c": {
+                                "d" : null
+                            },
+                            "f": null
+                        }
+                    }
+                },
+                "expected": {
+                     "a": {
+                        "b": {
+                            "c": { }
+                        }
+                    }
+                }
+            },
+            {
+                "description": "add recursively",
+                "target": {
+                    "a": {
+                        "b": {
+                            "c": {
+                                "d" : "e"
+                            }
+                        }
+                    }
+                },
+                "patch": {
+                     "a": {
+                        "b": {
+                            "c": {
+                                "f" : "g"
+                            },
+                            "h": "i"
+                        }
+                    }
+                },
+                "expected": {
+                     "a": {
+                        "b": {
+                            "c": {
+                                "d": "e",
+                                "f": "g"
+                            },
+                            "h": "i"
+                        }
+                    }
+                }
+            },
+            {
+                "description": "replace recursively",
+                "target": {
+                    "a": {
+                        "b": {
+                            "c": {
+                                "d" : "e"
+                            },
+                            "f": "g"
+                        }
+                    }
+                },
+                "patch": {
+                     "a": {
+                        "b": {
+                            "c": {
+                                "d" : "h"
+                            },
+                            "f": {
+                                "i": "j"
+                            }
+                        }
+                    }
+                },
+                "expected": {
+                     "a": {
+                        "b": {
+                            "c": {
+                                "d": "h"
+                            },
+                            "f": {
+                                "i": "j"
+                            }
+                        }
+                    }
+                }
+            }
+        ]
+    }
+]

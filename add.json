@@ -1,0 +1,95 @@
+[
+    {
+        "description": "If the member is currently undefined within the target resource, and the given value is not null, the member and the value are to be added to the target.",
+        "tests": [
+            {
+                "target": { },
+                "patch": { "a": "b" },
+                "expected": { "a": "b" }
+            },
+            {
+                "target": { "a": "b" },
+                "patch": { "c": "d" },
+                "expected": {
+                    "a": "b",
+                    "c": "d"
+                }
+            },
+            {
+                "target": {
+                    "a": null
+                },
+                "patch": { "c": "d" },
+                "expected": {
+                    "a": null,
+                    "c": "d"
+                }
+            },
+            {
+                "target": { "a": "b" },
+                "patch": { "c": [ "d", "e" ] },
+                "expected": {
+                    "a": "b",
+                    "c": [ "d", "e" ]
+                }
+            },
+            {
+                "target": { "a": "b" },
+                "patch": {
+                    "c": [ "d", "e" ],
+                    "f": "g"
+                },
+                "expected": {
+                    "a": "b",
+                    "c": [ "d", "e" ],
+                    "f": "g"
+                }
+            }
+        ]
+    },
+    {
+        "description": "Any object member contained in the provided data whose value is explicitly null is to be treated as if the member were undefined.",
+        "tests": [
+            {
+                "target": { },
+                "patch": {
+                    "a": "b",
+                    "c": null
+                },
+                "expected": { "a": "b" }
+            },
+            {
+                "target": { "a": "b" },
+                "patch": {
+                    "c": "d",
+                    "e": null
+                },
+                "expected": {
+                    "a": "b",
+                    "c": "d"
+                }
+            },
+            {
+                "target": {
+                    "a": null
+                },
+                "patch": {
+                    "c": "d",
+                    "e": null
+                },
+                "expected": {
+                    "a": null,
+                    "c": "d"
+                }
+            },
+            {
+                "target": { "a": "b" },
+                "patch": { "c": [ "d", null, "e" ] },
+                "expected": {
+                    "a": "b",
+                    "c": [ "d", "e" ]
+                }
+            }
+        ]
+    }
+]

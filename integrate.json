@@ -1,0 +1,36 @@
+[
+    {
+        "description": "integrate test cases",
+        "tests": [
+            {
+                "description": "an example by the draft",
+                "target": {
+                    "title": "Goodbye!",
+                    "author": {
+                        "givenName": "John",
+                        "familyName": "Doe"
+                    },
+                    "tags": [ "example", "sample" ],
+                    "content": "This will be unchanged"
+                },
+                "patch": {
+                    "title": "Hello!",
+                    "phoneNumber": "+01-123-456-7890",
+                    "author": {
+                        "familyName": null
+                    },
+                    "tags": [ "example" ]
+                },
+                "expected": {
+                    "title": "Hello!",
+                    "author" : {
+                        "givenName" : "John"
+                    },
+                    "tags": [ "example" ],
+                    "content": "This will be unchanged",
+                    "phoneNumber": "+01-123-456-7890"
+                }
+            }
+        ]
+    }
+]

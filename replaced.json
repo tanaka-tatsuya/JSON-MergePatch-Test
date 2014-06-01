@@ -1,0 +1,229 @@
+[
+    {
+        "description": "If the value is either a non-null JSON primitive or an Array and that member is currently defined within the target resource, the existing value for that member is to be replaced with that provided",
+        "tests": [
+            {
+                "target": { "a": "b" },
+                "patch": { "a": "c" },
+                "expected": { "a": "c" }
+            },
+            {
+                "target": {
+                    "a": [ "b", "c" ]
+                },
+                "patch": { "a": "d" },
+                "expected": { "a": "d" }
+            },
+            {
+                "target": { "a": 1 },
+                "patch": { "a": "b" },
+                "expected": { "a": "b" }
+            },
+            {
+                "target": { "a": null },
+                "patch": { "a": "b" },
+                "expected": { "a": "b" }
+            },
+            {
+                "target": {
+                    "a": { "b": "c" }
+                },
+                "patch": { "a": "d" },
+                "expected": { "a": "d" }
+            },
+            {
+                "target": { "a": "b" },
+                "patch": {
+                    "a": [ "c", "d" ]
+                },
+                "expected": {
+                    "a": [ "c", "d" ]
+                }
+            },
+            {
+                "target": {
+                    "a": [ "b", "c" ]
+                },
+                "patch": {
+                    "a": [ "d", "e" ]
+                },
+                "expected": {
+                    "a": [ "d", "e" ]
+                }
+            },
+            {
+                "target": { "a": 1 },
+                "patch": {
+                    "a": [ "b", "c" ]
+                },
+                "expected": {
+                    "a": [ "b", "c" ]
+                }
+            },
+            {
+                "target": { "a": null },
+                "patch": {
+                    "a": [ "b", "c" ]
+                },
+                "expected": {
+                    "a": [ "b", "c" ]
+                }
+            },
+            {
+                "target": {
+                    "a": { "b": "c" }
+                },
+                "patch": {
+                    "a": [ "d", "e" ]
+                },
+                "expected": {
+                    "a": [ "d", "e" ]
+                }
+            }
+        ]
+    },
+    {
+        "description": "If the value is a JSON object and that member is currently defined for the target resource and the existing value is a JSON primitive or Array, the existing value is to be replaced in whole by the object provided",
+        "tests": [
+            {
+                "target": { "a": "b" },
+                "patch": {
+                    "a": { }
+                },
+                "expected": {
+                    "a": { }
+                }
+            },
+            {
+                "target": { "a": "b" },
+                "patch": {
+                    "a": { "c": "d" }
+                },
+                "expected": {
+                    "a": { "c": "d" }
+                }
+            },
+            {
+                "target": {
+                    "a": [ "b", "c" ]
+                },
+                "patch": {
+                    "a": { "d": "e" }
+                },
+                "expected": {
+                    "a": { "d": "e" }
+                }
+            },
+            {
+                "target": { "a": null },
+                "patch": {
+                    "a": { "b": "c" }
+                },
+                "expected": {
+                    "a": { "b": "c" }
+                }
+            },
+            {
+                "target": { "a": 1 },
+                "patch": {
+                    "a": { "b": "c" }
+                },
+                "expected": {
+                    "a": { "b": "c" }
+                }
+            }
+        ]
+    },
+    {
+        "description": "Any object member contained in the provided data whose value is explicitly null is to be treated as if the member were undefined.",
+        "tests": [
+            {
+                "target": { "a": "b" },
+                "patch": {
+                    "a": [ "c", null, "d" ]
+                },
+                "expected": {
+                    "a": [ "c", "d" ]
+                }
+            },
+            {
+                "target": {
+                    "a": [ "b", "c" ]
+                },
+                "patch": {
+                    "a": [ "d", null, "e" ]
+                },
+                "expected": {
+                    "a": [ "d", "e" ]
+                }
+            },
+            {
+                "target": { "a": null },
+                "patch": {
+                    "a": [ "b", null, "c" ]
+                },
+                "expected": {
+                    "a": [ "b", "c" ]
+                }
+            },
+            {
+                "target": {
+                    "a": { "b": "c" }
+                },
+                "patch": {
+                    "a": [ "d", null, "e" ]
+                },
+                "expected": {
+                    "a": [ "d", "e" ]
+                }
+            },
+            {
+                "target": { "a": "b" },
+                "patch": {
+                    "a": { "b": null }
+                },
+                "expected": {
+                    "a": { }
+                }
+            },
+            {
+                "target": {
+                    "a": [ "b", "c" ]
+                },
+                "patch": {
+                    "a": {
+                        "d": "e",
+                        "f": null
+                    }
+                },
+                "expected": {
+                    "a": { "d": "e" }
+                }
+            },
+            {
+                "target": { "a": null },
+                "patch": {
+                    "a": {
+                        "b": "c",
+                        "d": null
+                    }
+                },
+                "expected": {
+                    "a": { "b": "c" }
+                }
+            },
+            {
+                "target": { "a": 1 },
+                "patch": {
+                    "a": {
+                        "b": "c",
+                        "d": null
+                    }
+                },
+                "expected": {
+                    "a": { "b": "c" }
+                }
+            }
+        ]
+    }
+]

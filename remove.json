@@ -1,0 +1,55 @@
+[
+    {
+        "description": "If the value is explicitly set to null and that member is currently defined within the target resource, the existing member is removed",
+        "tests": [
+            {
+                "target": { "a": "b" },
+                "patch": { "a": null },
+                "expected": { }
+            },
+            {
+                "target": {
+                    "a": "b",
+                    "c": "d"
+                },
+                "patch": { "a": null },
+                "expected": { "c": "d" }
+            },
+            {
+                "target": {
+                    "a": [ "b", "c " ],
+                    "d": "e"
+                },
+                "patch": { "a": null },
+                "expected": { "d": "e" }
+            },
+            {
+                "target": {
+                    "a": "b",
+                    "c": null
+                },
+                "patch": { "a": null },
+                "expected": { "c": null }
+            },
+            {
+                "target": {
+                    "a": null,
+                    "b": "c" 
+                },
+                "patch": { "a": null },
+                "expected": { "b": "c" }
+            },
+            {
+                "target": {
+                    "a": null,
+                    "b": "c" 
+                },
+                "patch": {
+                    "a": null,
+                    "b": null
+                },
+                "expected": { }
+            }
+        ]
+    }
+]
