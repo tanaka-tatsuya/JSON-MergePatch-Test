@@ -4,7 +4,7 @@
         "tests": [
             {
                 "description": "an example by the draft",
-                "target": {
+                "doc": {
                     "title": "Goodbye!",
                     "author": {
                         "givenName": "John",

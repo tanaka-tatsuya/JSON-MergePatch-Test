@@ -4,13 +4,13 @@
         "tests": [
             {
                 "description": "remove JSON primitive",
-                "target": { "a": "b" },
+                "doc": { "a": "b" },
                 "patch": { "a": null },
                 "expected": { }
             },
             {
                 "description": "remove JSON Array",
-                "target": {
+                "doc": {
                     "a": [ "b", "c" ]
                 },
                 "patch": { "a": null },
@@ -18,7 +18,7 @@
             },
             {
                 "description": "remove JSON Object",
-                "target": {
+                "doc": {
                     "a": { "b": "c" }
                 },
                 "patch": { "a": null },
@@ -31,7 +31,7 @@
         "tests": [
             {
                 "description": "remove JSON primitive",
-                "target": {
+                "doc": {
                     "a": "b",
                     "x": null,
                     "y": 1
@@ -44,7 +44,7 @@
             },
             {
                 "description": "remove JSON Array",
-                "target": {
+                "doc": {
                     "a": [ "b", "c" ],
                     "x": null,
                     "y": 1
@@ -57,7 +57,7 @@
             },
             {
                 "description": "remove JSON Object",
-                "target": {
+                "doc": {
                     "a": { "b": "c" },
                     "x": null,
                     "y": 1

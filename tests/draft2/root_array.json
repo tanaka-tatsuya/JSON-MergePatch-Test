@@ -3,49 +3,49 @@
         "description": "If the roots of either the merge patch or target resource documents are JSON Arrays, the target resource is replaced, in whole, by the merge patch document.",
         "tests" : [
             {
-                "target": null,
+                "doc": null,
                 "patch": [ "a", "b" ],
                 "exepected": [ "a", "b" ]
             },
             {
-                "target": false,
+                "doc": false,
                 "patch": [ "a", "b" ],
                 "exepected": [ "a", "b" ]
             },
             {
-                "target": true,
+                "doc": true,
                 "patch": [ "a", "b" ],
                 "exepected": [ "a", "b" ]
             },
             {
-                "target": 1,
+                "doc": 1,
                 "patch": [ "a", "b" ],
                 "exepected": [ "a", "b" ]
             },
             {
-                "target": "c",
+                "doc": "c",
                 "patch": [ "a", "b" ],
                 "exepected": [ "a", "b" ]
             },
             {
-                "target": { "c": "d" },
+                "doc": { "c": "d" },
                 "patch": [ "a", "b" ],
                 "exepected": [ "a", "b" ]
             },
             {
-                "target": {
+                "doc": {
                     "c": [ "d", "e" ]
                 },
                 "patch": [ "a", "b" ],
                 "exepected": [ "a", "b" ]
             },
             {
-                "target": [ "c", "d" ],
+                "doc": [ "c", "d" ],
                 "patch": [ "a", "b" ],
                 "exepected": [ "a", "b" ]
             },
             {
-                "target": [ "c", "d" ],
+                "doc": [ "c", "d" ],
                 "patch": { "a": "b" },
                 "exepected": { "a": "b" }
             }
@@ -55,17 +55,17 @@
         "description": "Any null member contained in the merge patch MUST be ignored and treated as if those members are undefined.",
         "tests" : [
             {
-                "target": [ "d" ],
+                "doc": [ "d" ],
                 "patch": [ "a", null, "b" ],
                 "exepected": [ "a", "b" ]
             },
             {
-                "target": [ "d" ],
+                "doc": [ "d" ],
                 "patch": { "a": null },
                 "exepected": { }
             },
             {
-                "target": [ "d" ],
+                "doc": [ "d" ],
                 "patch": {
                     "a": "b",
                     "c": null

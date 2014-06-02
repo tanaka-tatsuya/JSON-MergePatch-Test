@@ -4,13 +4,13 @@
         "tests": [
             {
                 "description": "add JSON primitive",
-                "target": { },
+                "doc": { },
                 "patch": { "a": "b" },
                 "expected": { "a": "b" }
             },
             {
                 "description": "add JSON Array",
-                "target": { },
+                "doc": { },
                 "patch": {
                     "a": [ "b", "c" ]
                 },
@@ -20,7 +20,7 @@
             },
             {
                 "description": "add JSON Object",
-                "target": { },
+                "doc": { },
                 "patch": {
                     "a": {
                         "b": [ "c", "d" ]
@@ -39,7 +39,7 @@
         "tests": [
             {
                 "description": "add JSON primitive",
-                "target": { },
+                "doc": { },
                 "patch": {
                     "a": "b",
                     "c": null
@@ -48,7 +48,7 @@
             },
             {
                 "description": "add JSON Array",
-                "target": { },
+                "doc": { },
                 "patch": {
                     "a": [ "b", null, "c" ]
                 },
@@ -58,7 +58,7 @@
             },
             {
                 "description": "add JSON Object",
-                "target": { },
+                "doc": { },
                 "patch": {
                     "a": {
                         "b": [ "c", "d" ],
@@ -78,7 +78,7 @@
         "tests": [
             {
                 "description": "add JSON primitive",
-                "target": {
+                "doc": {
                     "x": null,
                     "y": 1
                 },
@@ -93,7 +93,7 @@
             },
             {
                 "description": "add JSON Array",
-                "target": {
+                "doc": {
                     "x": null,
                     "y": 1
                 },
@@ -108,7 +108,7 @@
             },
             {
                 "description": "add JSON Object",
-                "target": {
+                "doc": {
                     "x": null,
                     "y": 1
                 },
