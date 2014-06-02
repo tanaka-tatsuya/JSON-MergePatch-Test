@@ -1,4 +1,4 @@
-JSON-MergePatch-Test
+JSON MergePatch Test
 ====================
 
-test suite for JSON Merge Patch
+This repository contains a set of JSON objects that implementators of [JSON Merge Patch](http://tools.ietf.org/html/draft-ietf-appsawg-json-merge-patch-02) can use.
